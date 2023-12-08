@@ -18,6 +18,10 @@ return new class extends Migration
             $table->dateTime('del_date', $precision = 0);
             $table->char('del_status', 1);
             $table->timestamps();
+            $table->unsignedBigInteger('pay_id'); // Foreign key column
+            $table->foreign('pay_id')->references('id')->on('payments');
+            $table->unsignedBigInteger('emp_id'); // Foreign key column
+            $table->foreign('emp_id')->references('id')->on('employees');
         });
     }
 

@@ -15,9 +15,15 @@ return new class extends Migration
             $table->id();
             $table->date('pay_date');
             $table->char('pay_slip', 25);
-            $table->string('mem_bank','30');
+            $table->string('mem_bank', '30');
             $table->dateTime('check_date', $precision = 0);
             $table->char('pay_status', 1);
+            $table->unsignedBigInteger('bank_id'); // Foreign key column
+            $table->foreign('bank_id')->references('id')->on('banks');
+            $table->unsignedBigInteger('order_id'); // Foreign key column
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->unsignedBigInteger('emp_id'); // Foreign key column
+            $table->foreign('emp_id')->references('id')->on('employees');
             $table->timestamps();
         });
     }
