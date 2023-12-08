@@ -18,6 +18,8 @@ return new class extends Migration
             $table->mediumInteger('pro_amount');
             $table->text('pro_detail');
             $table->char('serial_number', 15);
+            $table->unsignedBigInteger('brd_id');
+            $table->foreign('brd_id')->references('id')->on('brands');
             $table->timestamps();
         });
     }
